@@ -114,7 +114,7 @@ class Actography:
                     safari_src = None
                     chrome_src = home + '/AppData/Local/Google/Chrome/User Data/Default/History'
                     firefox_src = None # TODO
-                    edge_src = None # TODO
+                    edge_src = home + '/AppData/Local/Microsoft/Edge/User Data/Default/History'
 
                 else:
                     print('Sorry, having trouble with your operating system.')
@@ -179,7 +179,8 @@ class Actography:
                         pass
 
                     elif key == 'edge':
-                        pass
+                        command_str = "SELECT datetime(last_visit_time/1000000-11644473600,\
+                        'unixepoch','localtime'), url FROM urls ORDER BY last_visit_time DESC;"
 
                     temp_src = os.path.join('temp_history', fname)
                     df = self._import_history_func(temp_src, command_str)
