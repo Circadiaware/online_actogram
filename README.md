@@ -6,11 +6,25 @@ This repository and tool will be renamed.
 Forked from Barrett F. Davis excellent [online_actogram](https://github.com/barrettfdavis/online_actogram) script.
 
 ## Description
-Script to generate an 'online actogram' from google chrome or safari history files. The graphical presentation was inspired by this [UCSD tutorial](https://ccb.ucsd.edu/the-bioclock-studio/education-resources/basics/part2.html) and [this scientific paper](https://doi.org/10.1186/1741-7007-8-93).
+Script to generate an 'online actogram' from web browser history files.
 
-Currently set to import Safari's History.db file AND chrome's History file where applicable on MacOS and Windows. History files are copied from their home directories to a temporary location in the working directory. The temporary copies are then deleted after the script has executed. 
+The graphical presentation was inspired by this [UCSD tutorial](https://ccb.ucsd.edu/the-bioclock-studio/education-resources/basics/part2.html) and [this scientific paper](https://doi.org/10.1186/1741-7007-8-93).
 
-Plot can most simply be generated from the command line with:
+### Compatibility
+Currently configured to import history from ALL browsers available on the system, from the default user profiles for each:
+- Windows:
+  - Chrome ``History`` file
+  - Edge ``History`` file
+- MacOS:
+  - Chrome ``History`` file
+  - Safari ``History.db``
+
+Currently, this script may not function as intended if you use multiple profiles within one browser, or the browser's default installation profile has changed.
+
+## Usage
+History files are copied from their home directories to a temporary location in the working directory. These copies are then deleted after the script has executed. Only the ``last_visit_time`` is read.
+
+Plots are easily generated from the command line:
 
 ```python actogram.py```
 
@@ -18,7 +32,8 @@ Plot can most simply be generated from the command line with:
 Plots will be saved in a new sub-folder called "actograms" with appropriate timestamp and description. 
 
 
-Script now supports command line arguments (optional) for additional customizability, e.g.: 
+Script now supports command line arguments for additional customizability.
+For example: 
 
 ```python actogram.py --freq '15T' --daily_blur 3 --start '2020-01-01' ```
 
@@ -45,6 +60,8 @@ Where:
 ```
 
 ## Latest updates
+
+[Feature] Added support for the ``Default`` profile of Microsoft Edge for Windows
 
 [Bug fix] Previously there was an artificially low minimum window for all generated plots. Plots can now be shown with minutes resolution 
 
